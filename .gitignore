@@ -9,3 +9,19 @@ temp/
 lightpaper/gen-external-apklibs/
 lightpaper-test/gen-external-apklibs/
 out/
+*.class
+
+# Package Files #
+*.dex
+*.war
+*.ear
+*.apk
+bin/
+bin
+gen/
+release/
+release
+gen
+.metadata/
+.metadata
+*.project

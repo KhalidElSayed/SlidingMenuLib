@@ -1,51 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.slidingmenu</groupId>
+	<artifactId>parent</artifactId>
+	<version>1.3-SNAPSHOT</version>
+	<packaging>pom</packaging>
 
-	<artifactId>slidingmenu</artifactId>
-	<name>SlidingMenu</name>
-	<packaging>apklib</packaging>
+	<modules>
+		<module>library</module>
+		<module>library-maps-support</module>
+	</modules>
 
-	<parent>
-		<groupId>com.slidingmenu</groupId>
-		<artifactId>parent</artifactId>
-		<version>1.2</version>
-		<relativePath>../pom.xml</relativePath>
-	</parent>
-
-	<dependencies>
-		<dependency>
-			<groupId>com.google.android</groupId>
-			<artifactId>android</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.google.android.maps</groupId>
-			<artifactId>maps</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.google.android</groupId>
-			<artifactId>support-v4</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.actionbarsherlock</groupId>
-			<artifactId>actionbarsherlock</artifactId>
-			<type>apklib</type>
-		</dependency>
-	</dependencies>
+	<dependencyManagement>
+		<dependencies>
+            <dependency>
+                <groupId>com.slidingmenu</groupId>
+                <artifactId>slidingmenu</artifactId>
+                <version>${project.version}</version>
+                <type>jar</type>
+            </dependency>
+			<dependency>
+				<groupId>com.google.android</groupId>
+				<artifactId>android</artifactId>
+				<version>4.1.1.4</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.android.maps</groupId>
+				<artifactId>maps</artifactId>
+				<version>17_r1</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.android</groupId>
+				<artifactId>support-v4</artifactId>
+				<version>r7</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<build>
-		<sourceDirectory>src</sourceDirectory>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>com.jayway.maven.plugins.android.generation2</groupId>
+					<artifactId>android-maven-plugin</artifactId>
+					<version>3.5.0</version>
 
-		<plugins>
-			<plugin>
-				<groupId>com.jayway.maven.plugins.android.generation2</groupId>
-				<artifactId>android-maven-plugin</artifactId>
-				<extensions>true</extensions>
-				<configuration>
-					<nativeLibrariesDirectory>ignored</nativeLibrariesDirectory>
-				</configuration>
-			</plugin>
-		</plugins>
+					<configuration>
+						<sdk>
+							<platform>16</platform>
+						</sdk>
+						<undeployBeforeDeploy>true</undeployBeforeDeploy>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
+
 </project>
